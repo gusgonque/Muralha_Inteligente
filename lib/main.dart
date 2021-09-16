@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:muralha_inteligente_app/screens/dashboard.dart';
 
 void main() => runApp(MuralhaInteligenteApp());
 
-class MuralhaInteligenteApp extends StatelessWidget{
+class MuralhaInteligenteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('DashBoard'),),
+      theme: ThemeData(
+          primaryColor: Colors.green[900],
+          accentColor: Colors.blueAccent[700],
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.blueAccent[700],
+            textTheme: ButtonTextTheme.primary,
+          )
       ),
+      home: Dashboard(),
     );
   }
-
 }
+
