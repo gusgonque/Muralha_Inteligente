@@ -6,36 +6,45 @@ import 'package:muralha_inteligente_app/screens/car_list.dart';
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text('DashBoard'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('lib/images/logo.png'),
-          ),
-          Row(
-            children: [
-              _FeatureItem(
-                'Lista de\nVeículos suspeitos',
-                Icons.list,
-                onClick: () {
-                  _showCarList(context);
-                },
+      body: LayoutBuilder(
+        builder: (context, contraints) => SingleChildScrollView(
+        child: ConstrainedBox(
+            constraints: BoxConstraints(
+            minHeight: contraints.maxHeight,
+        ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset('lib/images/logo.png'),
               ),
-              _FeatureItem('Adicionar\nVeículo suspeito', Icons.add,
-                  onClick: () {
-                _showCarAdd(context);
-              }),
+              Row(
+                children: [
+                  _FeatureItem(
+                    'Lista de\nVeículos suspeitos',
+                    Icons.list,
+                    onClick: () {
+                      _showCarList(context);
+                    },
+                  ),
+                  _FeatureItem('Adicionar\nVeículo suspeito', Icons.add,
+                      onClick: () {
+                        _showCarAdd(context);
+                      }),
+                ],
+              ),
             ],
           ),
-        ],
+        ),
       ),
+      ),
+
     );
   }
 }
