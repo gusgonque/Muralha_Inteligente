@@ -27,7 +27,6 @@ dependencies:
   path:
   latlong: ^0.6.1
   flutter_map:
-  workmanager:
   flutter_local_notifications:
 
   # The following adds the Cupertino Icons font to your application.
