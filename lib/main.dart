@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
+import 'package:muralha_inteligente_app/screens/mapa.dart';
 
 void main() => runApp(MuralhaInteligenteApp());
 
@@ -9,14 +10,13 @@ class MuralhaInteligenteApp extends StatelessWidget{
     return MaterialApp(
       theme: ThemeData(
           primaryColor: Colors.green[900],
-          accentColor: Colors.blueAccent[700],
           buttonTheme: ButtonThemeData(
             buttonColor: Colors.blueAccent[700],
             textTheme: ButtonTextTheme.primary,
-          )
+          ), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blueAccent[700])
       ),
       debugShowCheckedModeBanner: false,
-      home: Dashboard(),
+      home: TestApp(),
     );
   }
 }
