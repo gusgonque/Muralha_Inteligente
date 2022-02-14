@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:geolocator/geolocator.dart';
 // TODO: fazer o marker para marcar uma área
+
+Future<Position> position = Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+
 class TestApp extends StatefulWidget {
   @override
   _TestAppState createState() => _TestAppState();
@@ -30,7 +35,8 @@ class _TestAppState extends State<TestApp> {
                 TileLayerOptions(
                     urlTemplate:
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    subdomains: ['a', 'b', 'c']),
+                    subdomains: ['a', 'b', 'c'],
+                ),
               ],
             ),
           ),
