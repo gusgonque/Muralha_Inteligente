@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:muralha_inteligente_app/screens/customize_marker_example.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
-import 'package:muralha_inteligente_app/screens/mapa.dart';
 
 void main() => runApp(MuralhaInteligenteApp());
 
@@ -17,7 +15,7 @@ class MuralhaInteligenteApp extends StatelessWidget{
           ), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blueAccent[700])
       ),
       debugShowCheckedModeBanner: false,
-      home: CustomizeMarkerExample(),
+      home: Dashboard(),
     );
   }
 }
