@@ -1,4 +1,4 @@
-//TODO: notificação de acordo com a distância do carro.
+//TODO: notificação de acordo com a distância do carro. https://pub.dev/packages/flutter_local_notifications
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';

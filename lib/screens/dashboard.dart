@@ -44,6 +44,8 @@ Future<Position> _determinePosition() async {
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    _determinePosition();
+    //TODO: explicar oq acontece se ñ ativar localização.
     return Scaffold(
       appBar: AppBar(
         title: Text('DashBoard'),
@@ -124,7 +126,6 @@ class _FeatureItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _determinePosition();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
