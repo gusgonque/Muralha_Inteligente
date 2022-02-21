@@ -44,8 +44,9 @@ Future<Position> _determinePosition() async {
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     _determinePosition();
-    //TODO: explicar oq acontece se ñ ativar localização.
+    //TODO: explicar oq acontece se ñ ativar localização. https://docs.flutter.dev/cookbook/design/snackbars ???
     return Scaffold(
       appBar: AppBar(
         title: Text('DashBoard'),

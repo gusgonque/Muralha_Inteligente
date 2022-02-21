@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//TODO: Mudar texto para botão de localização.
+
 class CarAdd extends StatefulWidget {
   @override
   _CarAddState createState() => _CarAddState();
