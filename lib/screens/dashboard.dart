@@ -4,7 +4,7 @@ import 'package:muralha_inteligente_app/screens/car_add.dart';
 import 'package:muralha_inteligente_app/screens/car_list.dart';
 import 'package:muralha_inteligente_app/screens/map.dart';
 
-Future<Position> _determinePosition() async {
+Future<Position> _determinePosition(context) async {
   bool serviceEnabled;
   LocationPermission permission;
 
@@ -26,12 +26,32 @@ Future<Position> _determinePosition() async {
       // Android's shouldShowRequestPermissionRationale
       // returned true. According to Android guidelines
       // your App should show an explanatory UI now.
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            // Retrieve the text the that user has entered by using the
+            // TextEditingController.
+            content: Text("O aplicativo não tem acesso a localização do dispositivo.\nVocê não conseguirá utilizar os recursos do aplicativo desse modo.\nPor favor, ative a localização manualmente."),
+          );
+        },
+      );
       return Future.error('Location permissions are denied');
     }
   }
 
   if (permission == LocationPermission.deniedForever) {
     // Permissions are denied forever, handle appropriately.
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          // Retrieve the text the that user has entered by using the
+          // TextEditingController.
+          content: Text("O aplicativo não tem acesso a localização do dispositivo.\nVocê não conseguirá utilizar os recursos do aplicativo desse modo.\nPor favor, ative a localização manualmente."),
+        );
+      },
+    );
     return Future.error(
         'Location permissions are permanently denied, we cannot request permissions.');
   }
@@ -45,8 +65,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    _determinePosition();
-    //TODO: explicar oq acontece se ñ ativar localização. https://docs.flutter.dev/cookbook/design/snackbars ???
+    _determinePosition(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('DashBoard'),
