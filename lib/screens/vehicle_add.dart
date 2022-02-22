@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//TODO: ** Mudar texto para botão de localização.
+//TODO: ?? Mudar texto para botão de localização.
 
 class CarAdd extends StatefulWidget {
   @override
@@ -9,9 +8,8 @@ class CarAdd extends StatefulWidget {
 }
 
 class _CarAddState extends State<CarAdd> {
-  final TextEditingController _placaVeiculo = TextEditingController();
-  final TextEditingController _descricaoVeiculo = TextEditingController();
-  final TextEditingController _localVeiculo = TextEditingController();
+  final TextEditingController _plate = TextEditingController();
+  final TextEditingController _description = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class _CarAddState extends State<CarAdd> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: TextField(
-                controller: _placaVeiculo,
+                controller: _plate,
                 decoration: InputDecoration(
                   labelText: 'Placa',
                 ),
@@ -38,19 +36,9 @@ class _CarAddState extends State<CarAdd> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: TextField(
-                controller: _descricaoVeiculo,
+                controller: _description,
                 decoration: InputDecoration(
                   labelText: 'Típo do veículo',
-                ),
-                style: TextStyle(fontSize: 24.0),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: TextField(
-                controller: _localVeiculo,
-                decoration: InputDecoration(
-                  labelText: 'Localização',
                 ),
                 style: TextStyle(fontSize: 24.0),
               ),
@@ -61,10 +49,9 @@ class _CarAddState extends State<CarAdd> {
                 width: double.maxFinite,
                 child: ElevatedButton(
                     onPressed: () {
-                      final String placa = _placaVeiculo.text;
-                      final String descricao = _descricaoVeiculo.text;
-                      final String local = _localVeiculo.text;
-                      //return Car(placa,descricao,local);
+                      final String placa = _plate.text;
+                      final String descricao = _description.text;
+                      //return Car(placa,descricao);
                     },
                     child: Text('Adicionar')),
               ),

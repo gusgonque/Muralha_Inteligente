@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:muralha_inteligente_app/screens/car_add.dart';
-import 'package:muralha_inteligente_app/screens/car_list.dart';
+import 'package:muralha_inteligente_app/screens/vehicle_add.dart';
+import 'package:muralha_inteligente_app/screens/vehicle_list.dart';
 import 'package:muralha_inteligente_app/screens/map.dart';
 
 Future<Position> _determinePosition(context) async {
