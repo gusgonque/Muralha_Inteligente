@@ -1,8 +1,16 @@
-{
+[
+  {
     "id": 1,
     "plate": "ABC1234",
     "description": "Carro",
     "latitude": -14.2400732,
     "longitude": -53.1805017
-
-}
+  },
+  {
+    "id": 2,
+    "plate": "ABC2244",
+    "description": "Moto",
+    "latitude": -20.2400732,
+    "longitude": -50.1805017
+  }
+]
