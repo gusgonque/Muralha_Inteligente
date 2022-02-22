@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+String url = 'https://raw.githubusercontent.com/gusgonque/Muralha_Inteligente/MuralhaInteligenteGIT/lib/API/test.json?token=GHSAT0AAAAAABRKVZRT2CPVX6RU544GCLKEYQU5TUQ';
+
 class Vehicle {
   final int id;
   final String plate;
@@ -23,7 +25,7 @@ class Vehicle {
 
 Future<Vehicle> createVehicle(String plate, String description, String latitude, String longitude) async {
   final response = await http.post(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums'),
+    Uri.parse(url),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -48,7 +50,7 @@ Future<Vehicle> createVehicle(String plate, String description, String latitude,
 
 Future<Vehicle> fetchVehicle() async {
   final response = await http.get(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+    Uri.parse(url),
   );
 
   if (response.statusCode == 200) {

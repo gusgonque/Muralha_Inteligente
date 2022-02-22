@@ -1,4 +1,4 @@
-//TODO: *** Fazer essa lista funcionar. Back-end, servidor https://docs.flutter.dev/cookbook/networking
+//TODO: *** Fazer essa lista funcionar. Back-end, servidor https://docs.flutter.dev/cookbook/networking https://docs.flutter.dev/cookbook#lists
 import 'package:flutter/material.dart';
 import '../models/vehicle.dart';
 
@@ -17,31 +17,26 @@ class _CarListState extends State<CarList> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lista de veículos',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Lista de veículos'),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Lista de veículos'),
-        ),
-        body: Center(
-          child: FutureBuilder<Vehicle>(
-            future: futureVehicle,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.plate);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
+      body: Center(
+        child: FutureBuilder<Vehicle>(
+          future: futureVehicle,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text(snapshot.data!.plate);
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
 
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
-            },
-          ),
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
         ),
       ),
     );
+
   }
 }
