@@ -3,7 +3,6 @@
     "id": 1,
     "plate": "ABC1234",
     "description": "Carro",
-    "thumbnailUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pastorecc.com.br%2Fveiculo%2Fastra-advantage&psig=AOvVaw0hjpkg_YvC0AtZD_fh4hma&ust=1645724490937000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCOjnrc-vlvYCFQAAAAAdAAAAABAI",
     "latitude": -14.2400732,
     "longitude": -53.1805017
   },
@@ -11,7 +10,6 @@
     "id": 2,
     "plate": "ABC2244",
     "description": "Moto",
-    "thumbnailUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DFelwnebwtWU&psig=AOvVaw19v6Ntu1_l1Dt-3E7-4fOr&ust=1645724420740000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCODc4K2vlvYCFQAAAAAdAAAAABAD",
     "latitude": -20.2400732,
     "longitude": -50.1805017
   }
