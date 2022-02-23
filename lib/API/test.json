@@ -2,14 +2,14 @@
   {
     "id": 1,
     "plate": "ABC1234",
-    "description": "Carro",
+    "description": "Corsa 1999 branco com amassado, sem parabrisa",
     "latitude": -14.2400732,
     "longitude": -53.1805017
   },
   {
     "id": 2,
     "plate": "ABC2244",
-    "description": "Moto",
+    "description": "fusca azul sem parachoque",
     "latitude": -20.2400732,
     "longitude": -50.1805017
   }
