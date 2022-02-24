@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:muralha_inteligente_app/models/vehicle.dart';
 
-//TODO: ?? Mudar texto para botão de localização.
+// ?? Mudar texto para botão de localização.
 
-class CarAdd extends StatefulWidget {
+class VehicleInfo extends StatefulWidget {
   @override
-  _CarAddState createState() => _CarAddState();
+  _VehicleInfoState createState() => _VehicleInfoState();
 }
 
-class _CarAddState extends State<CarAdd> {
-  final TextEditingController _plate = TextEditingController();
-  final TextEditingController _description = TextEditingController();
+class _VehicleInfoState extends State<VehicleInfo> {
+  final Vehicle vehicle;
 
+  _VehicleInfoState(this.vehicle);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Adicionar veículo suspeito'),
+        title: Text('Placa'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -23,11 +24,7 @@ class _CarAddState extends State<CarAdd> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: TextField(
-                controller: _plate,
-                decoration: InputDecoration(
-                  labelText: 'Placa',
-                ),
+              child: Text(),
                 style: TextStyle(
                   fontSize: 24.0,
                 ),

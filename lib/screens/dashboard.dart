@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:muralha_inteligente_app/screens/vehicle_add.dart';
+import 'package:muralha_inteligente_app/screens/vehicle_info.dart';
 import 'package:muralha_inteligente_app/screens/vehicle_list.dart';
 import 'package:muralha_inteligente_app/screens/map.dart';
 
@@ -85,6 +85,7 @@ class Dashboard extends StatelessWidget {
                 child: Image.asset('lib/images/logo.png'),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _FeatureItem(
                     'Lista de\nVeículos suspeitos',
@@ -93,10 +94,6 @@ class Dashboard extends StatelessWidget {
                       _showCarList(context);
                     },
                   ),
-                  _FeatureItem('Adicionar\nVeículo suspeito', Icons.add,
-                      onClick: () {
-                        _showCarAdd(context);
-                      }),
                   _FeatureItem('Mapa', Icons.map,
                       onClick: () {
                         _map(context);
@@ -124,7 +121,7 @@ void _showCarList(BuildContext context) {
 void _showCarAdd(BuildContext context) {
   Navigator.of(context).push(
     MaterialPageRoute(
-      builder: (context) => CarAdd(),
+      builder: (context) => VehicleInfo(),
     ),
   );
 }
@@ -155,7 +152,7 @@ class _FeatureItem extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(8.0),
             height: 120,
-            width: 110,
+            width: 160,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
