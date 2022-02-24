@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 //TODO: ** Fazer o Marco fazer o servidor.
 String url =
-    'https://raw.githubusercontent.com/gusgonque/Muralha_Inteligente/MuralhaInteligenteGIT/lib/API/test.json?token=GHSAT0AAAAAABRKVZRTZPB7AW4HCFA746V4YQXSCSQ'
+    'https://raw.githubusercontent.com/gusgonque/Muralha_Inteligente/MuralhaInteligenteGIT/lib/API/test.json?token=GHSAT0AAAAAABRKVZRTJS5H25EG4N7NGA5YYQXV5SA'
 ;
 
 class Vehicle {

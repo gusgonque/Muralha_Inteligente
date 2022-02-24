@@ -22,7 +22,7 @@ class Map extends StatelessWidget {
 class ShowMap extends StatelessWidget {
   final double lat;
   final double long;
-
+  //TODO: Mapa com fiação elétrica.
   ShowMap(this.lat, this.long);
   @override
   Widget build(BuildContext context) {

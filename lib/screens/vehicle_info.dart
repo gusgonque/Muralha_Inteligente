@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/models/vehicle.dart';
 
+import 'map.dart';
+
 // ?? Mudar texto para botão de localização.
 
-class VehicleInfo extends StatefulWidget {
-  @override
-  _VehicleInfoState createState() => _VehicleInfoState();
-}
-
-class _VehicleInfoState extends State<VehicleInfo> {
+class VehicleInfo extends StatelessWidget {
   final Vehicle vehicle;
 
-  _VehicleInfoState(this.vehicle);
+  VehicleInfo(this.vehicle);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Placa'),
+        title: Text('Informações'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -24,35 +21,33 @@ class _VehicleInfoState extends State<VehicleInfo> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: Text(),
-                style: TextStyle(
-                  fontSize: 24.0,
-                ),
+              child: Text(
+                  'Placa: ' + vehicle.plate,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: TextField(
-                controller: _description,
-                decoration: InputDecoration(
-                  labelText: 'Típo do veículo',
-                ),
-                style: TextStyle(fontSize: 24.0),
+              child: Text(
+                  'Descrição: ' + vehicle.description,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: SizedBox(
-                width: double.maxFinite,
-                child: ElevatedButton(
-                    onPressed: () {
-                      final String placa = _plate.text;
-                      final String descricao = _description.text;
-                      //return Car(placa,descricao);
-                    },
-                    child: Text('Adicionar')),
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(8.0),
+                height: 500,
+                width: 160,
+                child: ShowMap(vehicle.latitude, vehicle.longitude),
               ),
             ),
+
           ],
         ),
       ),

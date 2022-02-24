@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:muralha_inteligente_app/screens/vehicle_info.dart';
 import 'package:muralha_inteligente_app/screens/vehicle_list.dart';
 import 'package:muralha_inteligente_app/screens/map.dart';
 
@@ -114,14 +113,6 @@ void _showCarList(BuildContext context) {
   Navigator.of(context).push(
     MaterialPageRoute(
       builder: (context) => CarList(),
-    ),
-  );
-}
-
-void _showCarAdd(BuildContext context) {
-  Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (context) => VehicleInfo(),
     ),
   );
 }

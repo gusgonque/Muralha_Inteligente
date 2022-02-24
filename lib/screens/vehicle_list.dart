@@ -46,10 +46,20 @@ class VehiclesList extends StatelessWidget {
       ),
       itemCount: vehicles.length,
       itemBuilder: (context, index) {
-        return _FeatureItem(vehicles[index].plate, vehicles[index].description, onClick: VehicleInfo(vehicles[index]),);
+        return _FeatureItem(vehicles[index].plate, vehicles[index].description, onClick: () {
+          _vehicleInfo(context, vehicles[index]);
+        },);
       },
     );
   }
+}
+
+void _vehicleInfo(BuildContext context, Vehicle vehicle) {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => VehicleInfo(vehicle),
+    ),
+  );
 }
 
 class _FeatureItem extends StatelessWidget {
@@ -80,13 +90,15 @@ class _FeatureItem extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 16,
                     )),
-                Text(plate,
+                Text(
+                    plate,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 40,
                       letterSpacing: 3.0,
                     )),
-                Text('Descrição: ' + description,
+                Text(
+                    'Descrição: ' + description,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
