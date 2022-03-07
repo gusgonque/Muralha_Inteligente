@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "plate": "ABC2244",
-    "description": "fusca azul sem parachoque",
+    "plate": "ABC1234",
+    "description": "Descrição 1",
     "latitude": 26.212313,
     "longitude": 127.679153
   },
   {
     "id": 2,
-    "plate": "ABC1234",
-    "description": "Corsa 1999 branco com amassado, sem parabrisa",
+    "plate": "DEF5678",
+    "description": "Descrição 2",
     "latitude": -25.30066,
     "longitude": -57.63591
   }
