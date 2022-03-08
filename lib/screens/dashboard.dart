@@ -96,7 +96,8 @@ class Dashboard extends StatelessWidget {
                   _FeatureItem('Mapa', Icons.map,
                       onClick: () {
                         _map(context);
-                      }),
+                      },
+                  ),
                 ],
               ),
             ],
@@ -157,7 +158,8 @@ class _FeatureItem extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
-                    )),
+                    ),
+                ),
               ],
             ),
           ),
