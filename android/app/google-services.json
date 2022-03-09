@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "650583738947",
+    "project_id": "muralha-inteligente",
+    "storage_bucket": "muralha-inteligente.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650583738947:android:a936d26c801a79feda22f6",
+        "android_client_info": {
+          "package_name": "com.example.muralha_inteligente_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650583738947-8aikb57ejbgcmqt60erm95f9sblrv8it.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAcw6w1IOp_3gUSJX443SRMHSXAYjd-NI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650583738947-8aikb57ejbgcmqt60erm95f9sblrv8it.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
