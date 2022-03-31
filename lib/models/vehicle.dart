@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 //TODO: ** Fazer o Marco fazer o servidor.
-String url =
+const String url =
     'https://raw.githubusercontent.com/gusgonque/Muralha_Inteligente/MuralhaInteligenteGIT/lib/API/test.json?token=GHSAT0AAAAAABRKVZRS5BUVK6277E7KKYEKYRGHCKQ'
 ;
 

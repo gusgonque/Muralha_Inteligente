@@ -23,14 +23,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_local_notifications:
   flutter_map:
   flutter_map_location_marker:
   cupertino_icons:
   geolocator:
   http:
-  sqflite:
-  path:
+  firebase_core:
+  firebase_messaging:
 
 dev_dependencies:
   flutter_test:
