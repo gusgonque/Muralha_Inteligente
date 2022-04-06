@@ -3,8 +3,8 @@ import 'package:muralha_inteligente_app/screens/vehicle_info.dart';
 import '../models/vehicle.dart';
 import 'package:http/http.dart' as http;
 
-class CarList extends StatelessWidget {
-  const CarList();
+class VehicleList extends StatelessWidget {
+  const VehicleList();
 
   @override
   Widget build(BuildContext context) {

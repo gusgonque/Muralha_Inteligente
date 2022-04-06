@@ -3,14 +3,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
 
+import 'notifications/notification.dart';
+import 'screens/vehicle_list.dart';
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  String? token = await messaging.getToken();
-  print('token = $token');
-
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
     announcement: false,
@@ -23,14 +23,17 @@ void main() async{
 
   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
     print('User granted permission');
+    notificationHandler(messaging);
   } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
     print('User granted provisional permission');
+    notificationHandler(messaging);
   } else {
     print('User declined or has not accepted permission');
   }
 
   runApp(MuralhaInteligenteApp());
 }
+
 class MuralhaInteligenteApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/models/vehicle.dart';
-
 import 'map.dart';
-
-// ?? Mudar texto para botão de localização.
 
 class VehicleInfo extends StatelessWidget {
   final Vehicle vehicle;

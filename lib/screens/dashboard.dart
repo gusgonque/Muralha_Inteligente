@@ -113,7 +113,7 @@ class Dashboard extends StatelessWidget {
 void _showCarList(BuildContext context) {
   Navigator.of(context).push(
     MaterialPageRoute(
-      builder: (context) => CarList(),
+      builder: (context) => VehicleList(),
     ),
   );
 }
