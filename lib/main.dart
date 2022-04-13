@@ -3,7 +3,54 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+class LocalNotificationService {
+  static final FlutterLocalNotificationsPlugin _notificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  static void initialize(BuildContext context) {
+    final InitializationSettings initializationSettings = InitializationSettings(
+        android: const AndroidInitializationSettings("@mipmap/your_icon"));
+
+    _notificationsPlugin.initialize(initializationSettings);
+  }
+
+
+//=================================================
+//==============this is the update notification
+
+  static Future<void> showProgressNotification() async {
+    const int maxProgress = 5;
+    for (int i = 0; i <= maxProgress; i++) {
+      await Future<void>.delayed(const Duration(seconds: 1), () async {
+        final AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails('progress channel', 'progress channel',
+            channelDescription: 'progress channel description',
+            channelShowBadge: false,
+            importance: Importance.max,
+            priority: Priority.high,
+            playSound: false,
+            showProgress: true,
+            maxProgress: maxProgress,
+            progress: i);
+        final NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+        await _notificationsPlugin.show(
+            0,//I use this id to cancel it from below method
+            'progress notification title',
+            'progress notification body',
+            platformChannelSpecifics,
+            payload: 'item x');
+      });
+    }
+  }
+
+  //=========================and this is for the ProgressNotification to be cancelled
+  static Future<void> cancelNotification() async {
+    await _notificationsPlugin.cancel(0);
+  }
+
+}
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -23,34 +70,29 @@ void main() async{
     sound: true,
   );
 
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+// initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
+  const AndroidInitializationSettings initializationSettingsAndroid =
+  AndroidInitializationSettings('app_icon');
+  final IOSInitializationSettings initializationSettingsIOS =
+  IOSInitializationSettings(
+      onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+  final MacOSInitializationSettings initializationSettingsMacOS =
+  MacOSInitializationSettings();
+  final InitializationSettings initializationSettings = InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+      macOS: initializationSettingsMacOS);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+      onSelectNotification: selectNotification);
+
   if (settings.authorizationStatus == AuthorizationStatus.authorized || settings.authorizationStatus == AuthorizationStatus.provisional) {
     print('User granted permission');
     _startNotificationHandler(messaging);
   } else {
     print('User declined or has not accepted permission');
   }
-
-  AwesomeNotifications().initialize(
-    // set the icon to null if you want to use the default app icon
-      'resource://drawable/res_app_icon',
-      [
-        NotificationChannel(
-            channelGroupKey: 'basic_channel_group',
-            channelKey: 'basic_channel',
-            channelName: 'Basic notifications',
-            channelDescription: 'Notification channel for basic tests',
-            defaultColor: Color(0xFF9D50DD),
-            ledColor: Colors.white)
-      ],
-      // Channel groups are only visual and are not required
-      channelGroups: [
-        NotificationChannelGroup(
-            channelGroupkey: 'basic_channel_group',
-            channelGroupName: 'Basic group')
-      ],
-      debug: true
-  );
-
   runApp(MuralhaInteligenteApp());
 }
 
@@ -84,23 +126,17 @@ Future<void> _startNotificationHandler(FirebaseMessaging messaging) async {
 }
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  RemoteMessage remote = message;
-  print("Mensagem recebida em background: ${remote.data}");
-  Position position = await Geolocator.getCurrentPosition();
+  print("Mensagem recebida em background"); // : ${message.data}
+  Position? position = await Geolocator.getLastKnownPosition();
 
-  double distance = Geolocator.distanceBetween(position.latitude, position.longitude, double.parse(remote.data["lat"]), double.parse(remote.data["long"]));
+  double distance = Geolocator.distanceBetween(position?.latitude ?? 0, position?.longitude ?? 0, double.parse(message.data["lat"]), double.parse(message.data["long"]));
   var distanceInKm = (distance / 1000);
 
-  print('Distance is: ${distanceInKm.toString()}');
+  print('Distance is: $distanceInKm');
   if (distanceInKm <= 5) {
     print("NOTIFICAR.");
   } else {
     print("NÃO NOTIFICAR.");
+    await LocalNotificationService.cancelNotification();
   }
-}
-
-Future<bool> isValidDistance(double latitude, double longitude) async {
-
-
-  return false;
 }
