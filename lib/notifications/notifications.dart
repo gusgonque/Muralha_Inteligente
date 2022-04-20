@@ -1,31 +1,19 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
-
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
-
-String? selectedNotificationPayload;
-
-final BehaviorSubject<ReceivedNotification> didReceiveLocalNotificationSubject =
-BehaviorSubject<ReceivedNotification>();
-
-final BehaviorSubject<String?> selectNotificationSubject =
-BehaviorSubject<String?>();
 
 class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin _notificationsPlugin = FlutterLocalNotificationsPlugin();
 
-  static void initialize(BuildContext context) {
+  static void initialize() {
     final InitializationSettings initializationSettings = InitializationSettings(
-        android: const AndroidInitializationSettings("@mipmap/your_icon"));
-
+        android: const AndroidInitializationSettings('@mipmap/ic_launcher'),
+    );
     _notificationsPlugin.initialize(initializationSettings);
   }
 
-//=================================================
-//==============this is the update notification
+  //=================================================
+  //==============this is the update notification
 
   static Future<void> showProgressNotification() async {
     const int maxProgress = 5;
@@ -97,8 +85,8 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     print("NOTIFICAR.");
   } else {
     print("NÃO NOTIFICAR.");
-    await flutterLocalNotificationsPlugin.initialize();
-
-    await flutterLocalNotificationsPlugin.cancel(int.parse(message.data["id"]));
+    await LocalNotificationService.showProgressNotification();
+    await Future<void>.delayed(const Duration(seconds: 2));//faking task delay
+    await LocalNotificationService.cancelNotification();//by default I have made id=0
   }
 }

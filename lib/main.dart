@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
 import 'notifications/notifications.dart';
 
@@ -15,31 +15,19 @@ void main() async{
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   NotificationSettings settings = await messaging.requestPermission(
-    alert: true,
-    announcement: false,
-    badge: true,
-    carPlay: false,
-    criticalAlert: false,
-    provisional: false,
     sound: false,
   );
 
+  LocalNotificationService.initialize();
+
   if (settings.authorizationStatus == AuthorizationStatus.authorized || settings.authorizationStatus == AuthorizationStatus.provisional) {
     print('User granted permission');
+    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    LocalNotificationService.initialize();
     startNotificationHandler(messaging);
   } else {
     print('User declined or has not accepted permission');
   }
-
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (String? payload) async {
-        if (payload != null) {
-          debugPrint('notification payload: $payload');
-        }
-        selectedNotificationPayload = payload;
-        selectNotificationSubject.add(payload);
-      },
-  );
 
   runApp(MuralhaInteligenteApp());
 }
