@@ -1,16 +1,7 @@
-[
-  {
-    "id": 1,
-    "plate": "ABC1234",
-    "description": "Descrição 1",
-    "latitude": 26.212313,
-    "longitude": 127.679153
-  },
-  {
-    "id": 2,
-    "plate": "DEF5678",
-    "description": "Descrição 2",
-    "latitude": -25.30066,
-    "longitude": -57.63591
-  }
-]
+{
+  "id": 0,
+  "plate": "ABC1234",
+  "description": "Descrição 1",
+  "latitude": 26.212313,
+  "longitude": 127.679153
+}

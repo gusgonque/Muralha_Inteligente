@@ -18,8 +18,6 @@ void main() async{
     sound: false,
   );
 
-  LocalNotificationService.initialize();
-
   if (settings.authorizationStatus == AuthorizationStatus.authorized || settings.authorizationStatus == AuthorizationStatus.provisional) {
     print('User granted permission');
     await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
