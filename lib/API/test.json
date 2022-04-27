@@ -2,14 +2,14 @@
   {
     "id": 0,
     "plate": "ABC1234",
-    "description": "Descrição 1",
+    "description": "Descrição 1 - Foz do Iguaçu",
     "latitude": -25.516592,
     "longitude": -54.585251
   },
   {
     "id": 1,
     "plate": "1234567",
-    "description": "Descrição 2",
+    "description": "Descrição 2 - Curitiba",
     "latitude": -25.441105,
     "longitude": -49.276855
   }
