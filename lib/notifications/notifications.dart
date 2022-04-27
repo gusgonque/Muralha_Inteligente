@@ -28,12 +28,6 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('Distance is: $distanceInKm');
   if (distanceInKm <= 5) {
     print("NOTIFICAR.");
-    await flutterLocalNotificationsPlugin.show(
-        0,
-        "VEÍCULO SUSPEITO NA SUA ÁREA",
-        "Cuidado com o veículo de descrição: ${message.data["body"]}",
-        platformChannelSpecifics, //TODO: QUE PORRA É ESSA?
-        payload: 'item x');
   } else {
     print("NÃO NOTIFICAR.");
   }
