@@ -30,6 +30,7 @@ dependencies:
   http:
   firebase_core:
   firebase_messaging:
+  awesome_notifications_fcm:
 
 dev_dependencies:
   flutter_test:
