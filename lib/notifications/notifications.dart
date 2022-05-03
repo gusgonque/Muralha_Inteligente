@@ -29,7 +29,7 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   } else {
     print("NÃO NOTIFICAR.");
     await Future<void>.delayed(const Duration(seconds: 1), () async {
-        AwesomeNotifications().cancel(0);
+        AwesomeNotifications().cancelAll();
     });
   }
 }
