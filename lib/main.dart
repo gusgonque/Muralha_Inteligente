@@ -28,20 +28,7 @@ void main() async{
 
   AwesomeNotifications().initialize(
       null,
-      [
-        NotificationChannel(
-            channelGroupKey: 'basic_channel_group',
-            channelKey: 'basic_channel',
-            channelName: 'Basic notifications',
-            channelDescription: 'Notification channel for basic tests',
-            defaultColor: Color(0xFF9D50DD),
-            ledColor: Colors.white)
-      ],
-      channelGroups: [
-        NotificationChannelGroup(
-        channelGroupkey: 'basic_channel_group',
-        channelGroupName: 'Basic group')
-      ],
+      [],
   );
 
   // Create the initialization for your desired push service here
