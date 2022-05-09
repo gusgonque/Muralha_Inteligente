@@ -1,7 +1,7 @@
 {
   "id": 0,
-  "plate": "ABC1234",
-  "description": "Descrição 1 - Foz do Iguaçu",
+  "title": "Título Teste - Foz do Iguaçu",
+  "body": "Corpo Teste",
   "lat": -25.516592,
   "long": -54.585251
 }
