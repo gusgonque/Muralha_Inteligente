@@ -2,9 +2,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-//TODO: ** Fazer o Marco fazer o servidor.
 const String url =
-    'https://raw.githubusercontent.com/gusgonque/Muralha_Inteligente/MuralhaInteligenteGIT/lib/API/test.json?token=GHSAT0AAAAAABRKVZRSCI6IW4FGFVGVOPTUYTJKPKQ'
+    'https://raw.githubusercontent.com/gusgonque/Minhas_Coisas/master/test.json'
 ;
 
 class Vehicle {

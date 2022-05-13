@@ -91,7 +91,7 @@ Future<Position> determinePosition(context) async {
           );
         },
       );
-      return Future.error('Location permissions are denied');
+      print('Location permissions are denied');
     }
   }
 

@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -26,8 +25,6 @@ Future<void> startNotificationHandler(FirebaseMessaging messaging) async {
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("Handling a background message: ${message.messageId}");
   int id = createUniqueID(10000);
-
-  await Firebase.initializeApp();
   Position? position = await Geolocator.getLastKnownPosition();
 
   double distance = Geolocator.distanceBetween(position?.latitude ?? 0, position?.longitude ?? 0, double.parse(message.data["lat"]), double.parse(message.data["long"]));

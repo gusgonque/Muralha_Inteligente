@@ -15,7 +15,7 @@ void initializeApp() async{
           channelKey: 'basic_channel',
           channelName: 'Basic notifications',
           channelDescription: 'Notification channel for basic tests',
-          defaultColor: Colors.blue,
+          defaultColor: Colors.blue[900],
           ledColor: Colors.white,
       )
     ],
@@ -32,15 +32,8 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
-  AwesomeNotifications().initialize(
-      null,
-      [],
-  );
-
-  // Create the initialization for your desired push service here
   await Firebase.initializeApp();
-
+  initializeApp();
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
@@ -56,7 +49,12 @@ void main() async{
 
   if (settings.authorizationStatus == AuthorizationStatus.authorized || settings.authorizationStatus == AuthorizationStatus.provisional) {
     print('User granted permission');
-    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+
     startNotificationHandler(messaging);
   } else {
     print('User declined or has not accepted permission');
