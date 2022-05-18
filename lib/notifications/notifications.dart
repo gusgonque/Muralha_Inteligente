@@ -13,7 +13,7 @@ Future<void> startNotificationHandler(FirebaseMessaging messaging) async {
   String? token = await messaging.getToken();
   print('token = $token');
 
-  messaging.subscribeToTopic("todos");
+  messaging.subscribeToTopic('todos');
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     print ('mensagem recebida em foreground');
