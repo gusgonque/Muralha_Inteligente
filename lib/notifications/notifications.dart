@@ -37,7 +37,8 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
             id: id,
             channelKey: 'basic_channel',
             title: 'VEÍCULO SUSPEITO EM SUA ÁREA!',
-            body: 'Clique aqui para mais informações.'
+            body: 'Clique aqui para mais informações.',
+            wakeUpScreen: true
         ),
     );
   else
