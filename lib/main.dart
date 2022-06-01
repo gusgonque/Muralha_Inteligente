@@ -41,7 +41,6 @@ void main() async{
   // Create the initialization for your desired push service here
   await Firebase.initializeApp();
 
-
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   NotificationSettings settings = await messaging.requestPermission(
