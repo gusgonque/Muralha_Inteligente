@@ -1,5 +1,3 @@
-//TODO: ** notificação de acordo com a distância do carro. https://pub.dev/packages/flutter_local_notifications
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
@@ -23,7 +21,6 @@ class Map extends StatelessWidget {
 class ShowMap extends StatelessWidget {
   final double lat;
   final double long;
-  //TODO: Mapa com fiação elétrica.
   ShowMap(this.lat, this.long);
   @override
   Widget build(BuildContext context) {
@@ -91,7 +88,7 @@ Future<Position> determinePosition(context) async {
           );
         },
       );
-      return Future.error('Location permissions are denied');
+      print('Location permissions are denied');
     }
   }
 
