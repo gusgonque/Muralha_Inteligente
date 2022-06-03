@@ -41,6 +41,4 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
             wakeUpScreen: true
         ),
     );
-  else
-    print('Não foi notificado');
 }
