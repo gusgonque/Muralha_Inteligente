@@ -26,6 +26,9 @@ void initializeApp() async{
           channelGroupName: 'Basic group')
     ],
   );
+
+  // Create the initialization for your desired push service here
+  await Firebase.initializeApp();
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -33,14 +36,9 @@ final navigatorKey = GlobalKey<NavigatorState>();
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  AwesomeNotifications().initialize(
-      null,
-      [],
-  );
+  initializeApp();
 
-  // Create the initialization for your desired push service here
-  await Firebase.initializeApp();
-
+  FirebaseMessaging.instance.requestPermission();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   NotificationSettings settings = await messaging.requestPermission(

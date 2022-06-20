@@ -167,7 +167,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     completionHandler()
   }
 }
-
 // [END ios_10_message_handling]
 
 extension AppDelegate: MessagingDelegate {
