@@ -6,17 +6,25 @@ import 'package:geolocator/geolocator.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
 import 'notifications/notifications.dart';
 
-void initializeApp() async{
+final navigatorKey = GlobalKey<NavigatorState>();
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+
+  // Create the initialization for your desired push service here
+  await Firebase.initializeApp();
+
   AwesomeNotifications().initialize(
-      null, // this makes you use your default icon, if you haven't one
+    null, // this makes you use your default icon, if you haven't one
     [
       NotificationChannel(
-          channelGroupKey: 'basic_channel_group',
-          channelKey: 'basic_channel',
-          channelName: 'Basic notifications',
-          channelDescription: 'Notification channel for basic tests',
-          defaultColor: Colors.blue,
-          ledColor: Colors.white,
+        channelGroupKey: 'basic_channel_group',
+        channelKey: 'basic_channel',
+        channelName: 'Basic notifications',
+        channelDescription: 'Notification channel for basic tests',
+        defaultColor: Colors.blue,
+        ledColor: Colors.white,
       )
     ],
     // Channel groups are only visual and are not required
@@ -26,17 +34,6 @@ void initializeApp() async{
           channelGroupName: 'Basic group')
     ],
   );
-
-  // Create the initialization for your desired push service here
-  await Firebase.initializeApp();
-}
-
-final navigatorKey = GlobalKey<NavigatorState>();
-
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-
-  initializeApp();
 
   FirebaseMessaging.instance.requestPermission();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
