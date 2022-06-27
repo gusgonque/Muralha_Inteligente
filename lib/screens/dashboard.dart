@@ -22,13 +22,13 @@ class Dashboard extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset('lib/images/logo.png'),
+                child: Image.asset('lib/images/logo.png'), // TODO: Fazer a logo
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _FeatureItem(
-                    'Lista de\nVeículos suspeitos',
+                    'Lista\nOnline',
                     Icons.list,
                     onClick: () {
                       _showCarList(context);
