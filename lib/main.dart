@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
+import 'package:muralha_inteligente_app/screens/map.dart';
 import 'notifications/notifications.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -50,7 +51,7 @@ void main() async{
 
   if (settings.authorizationStatus == AuthorizationStatus.authorized || settings.authorizationStatus == AuthorizationStatus.provisional) {
     print('User granted permission');
-    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    determinePosition(navigatorKey);
     startNotificationHandler(messaging);
   } else {
     print('User declined or has not accepted permission');
