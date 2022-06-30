@@ -2,7 +2,6 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
 import 'package:muralha_inteligente_app/screens/map.dart';
 import 'notifications/notifications.dart';
@@ -12,8 +11,6 @@ final navigatorKey = GlobalKey<NavigatorState>();
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-
-  // Create the initialization for your desired push service here
   await Firebase.initializeApp();
 
   AwesomeNotifications().initialize(
