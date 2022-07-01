@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:muralha_inteligente_app/controller/mapController.dart';
 
 int createUniqueID(int maxValue){
   Random random = new Random();
@@ -24,11 +24,7 @@ Future<void> startNotificationHandler(FirebaseMessaging messaging) async {
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("Handling a background message: ${message.messageId}");
   int id = createUniqueID(10000);
-  Position? position = await Geolocator.getLastKnownPosition();
-
-  double distance = Geolocator.distanceBetween(position?.latitude ?? 0, position?.longitude ?? 0, double.parse(message.data["lat"]), double.parse(message.data["long"]));
-  var distanceInKm = (distance / 1000);
-  print('Distance is: $distanceInKm');
+  double distanceInKm = await determineDistance(double.parse(message.data["lat"]), double.parse(message.data["long"]));
 
   if(distanceInKm<=5)
     AwesomeNotifications().createNotification(

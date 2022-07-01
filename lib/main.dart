@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
-import 'package:muralha_inteligente_app/screens/map.dart';
 import 'notifications/notifications.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -48,7 +47,6 @@ void main() async{
 
   if (settings.authorizationStatus == AuthorizationStatus.authorized || settings.authorizationStatus == AuthorizationStatus.provisional) {
     print('User granted permission');
-    determinePosition(navigatorKey);
     startNotificationHandler(messaging);
   } else {
     print('User declined or has not accepted permission');

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:muralha_inteligente_app/screens/vehicle_list.dart';
+import 'package:muralha_inteligente_app/controller/mapController.dart';
+import 'package:muralha_inteligente_app/models/VehicleListModel.dart';
 import 'package:muralha_inteligente_app/screens/map.dart';
 
 class Dashboard extends StatelessWidget {

@@ -1,36 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:muralha_inteligente_app/models/vehicleModel.dart';
+
 
 const String url =
     'https://raw.githubusercontent.com/gusgonque/Minhas_Coisas/master/test.json'
 ;
-
-class Vehicle {
-  final int id;
-  final String plate;
-  final String description;
-  final double latitude;
-  final double longitude;
-
-  const Vehicle({
-    required this.id,
-    required this.plate,
-    required this.description,
-    required this.latitude,
-    required this.longitude,
-  });
-
-  factory Vehicle.fromJson(Map<String, dynamic> json) {
-    return Vehicle(
-      id: json['id'] as int,
-      plate: json['plate'] as String,
-      description: json['description'] as String,
-      latitude: json['latitude'] as double,
-      longitude: json['longitude'] as double,
-    );
-  }
-}
 
 Future<Vehicle> createVehicle(String plate, String description, double latitude, double longitude) async {
   final response = await http.post(

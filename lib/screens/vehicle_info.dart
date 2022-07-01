@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:muralha_inteligente_app/models/vehicle.dart';
-import 'map.dart';
+import 'package:muralha_inteligente_app/controller/mapController.dart';
+import 'package:muralha_inteligente_app/models/vehicleModel.dart';
 
 class VehicleInfo extends StatelessWidget {
   final Vehicle vehicle;
