@@ -60,12 +60,18 @@ class ShowMap extends StatelessWidget {
 
 //Determine actual position
 Future<Position> determinePosition(context) async {
-  bool serviceEnabled;
-  LocationPermission permission;
 
-  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  await checkPermissionLocation(context);
 
-  permission = await Geolocator.checkPermission();
+  return await Geolocator.getCurrentPosition();
+}
+
+// check the permissions for location of dispositive.
+Future<void> checkPermissionLocation(context) async {
+
+  bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  LocationPermission permission = await Geolocator.checkPermission();
+
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
     if (!serviceEnabled || permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
@@ -80,14 +86,11 @@ Future<Position> determinePosition(context) async {
       print('Location permissions are denied');
     }
   }
-
-  return await Geolocator.getCurrentPosition();
 }
 
 // Determine distance between a point and the last know location.
 Future<double> determineDistance(double lat, double long) async {
   Position? position = await Geolocator.getLastKnownPosition();
-
   print('lat: ${position?.latitude}');
 
   double distance = Geolocator.distanceBetween(position?.latitude ?? 0, position?.longitude ?? 0, lat, long);
@@ -95,3 +98,4 @@ Future<double> determineDistance(double lat, double long) async {
   print('Distance is: $distanceInKm');
   return distanceInKm;
 }
+
