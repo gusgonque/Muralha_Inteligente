@@ -88,6 +88,8 @@ Future<Position> determinePosition(context) async {
 Future<double> determineDistance(double lat, double long) async {
   Position? position = await Geolocator.getLastKnownPosition();
 
+  print('lat: ${position?.latitude}');
+
   double distance = Geolocator.distanceBetween(position?.latitude ?? 0, position?.longitude ?? 0, lat, long);
   var distanceInKm = (distance / 1000);
   print('Distance is: $distanceInKm');
