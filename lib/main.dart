@@ -52,6 +52,7 @@ void main() async{
     print('User declined or has not accepted permission');
   }
 
+
   runApp(MuralhaInteligenteApp());
 }
 

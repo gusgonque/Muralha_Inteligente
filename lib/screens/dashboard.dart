@@ -6,7 +6,7 @@ import 'package:muralha_inteligente_app/screens/map.dart';
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    checkPermissionLocation(context);
+    determinePosition(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('DashBoard'),
