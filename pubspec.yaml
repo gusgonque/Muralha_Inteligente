@@ -31,7 +31,7 @@ dependencies:
   firebase_core:
   firebase_messaging:
   awesome_notifications:
-  background_locator:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

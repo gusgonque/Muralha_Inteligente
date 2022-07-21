@@ -3,6 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowMap extends StatelessWidget {
   final double lat;
@@ -92,8 +93,25 @@ Future<void> checkPermissionLocation(context) async {
 Future<double> determineDistance(double lat, double long) async {
   Position? position = await Geolocator.getLastKnownPosition();
   print('lat: ${position?.latitude}');
+  double distance;
 
-  double distance = Geolocator.distanceBetween(position?.latitude ?? 0, position?.longitude ?? 0, lat, long);
+  // obtain shared preferences
+  final prefs = await SharedPreferences.getInstance();
+
+  // set value
+  if(position != null) {
+    print('salvando');
+    await prefs.setDouble('lat', position.latitude);
+    await prefs.setDouble('long', position.longitude);
+    distance = Geolocator.distanceBetween(position.latitude, position.longitude, lat, long);
+  } else {
+    print('salvando');
+    final prefs = await SharedPreferences.getInstance();
+    final latitude = prefs.getDouble('lat') ?? 0;
+    final longitude = prefs.getDouble('long') ?? 0;
+    distance = Geolocator.distanceBetween(latitude, longitude, lat, long);
+  }
+
   var distanceInKm = (distance / 1000);
   print('Distance is: $distanceInKm');
   return distanceInKm;

@@ -36,4 +36,5 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
             wakeUpScreen: true
         ),
     );
+
 }
