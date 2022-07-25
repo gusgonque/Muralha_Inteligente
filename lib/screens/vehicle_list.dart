@@ -16,9 +16,11 @@ class VehiclesList extends StatelessWidget {
       ),
       itemCount: vehicles.length,
       itemBuilder: (context, index) {
-        return _FeatureItem(vehicles[index].plate, vehicles[index].description, onClick: () {
-          _vehicleInfo(context, vehicles[index]);
-        },);
+        return _FeatureItem(vehicles[index].plate, vehicles[index].description,
+          onClick: () {
+            _vehicleInfo(context, vehicles[index]);
+          },
+        );
       },
     );
   }
