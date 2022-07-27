@@ -3,6 +3,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:muralha_inteligente_app/controller/mapController.dart';
 
+final String topic = 'todos';
+
 int createUniqueID(int maxValue){
   Random random = new Random();
   return random.nextInt(maxValue);
@@ -12,13 +14,14 @@ Future<void> startNotificationHandler(FirebaseMessaging messaging) async {
   String? token = await messaging.getToken();
   print('token = $token');
 
-  messaging.subscribeToTopic('todos');
+  messaging.subscribeToTopic(topic);
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     print ('mensagem recebida em foreground');
   });
 
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
 }
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
