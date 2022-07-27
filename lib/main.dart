@@ -11,6 +11,8 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
+  FirebaseMessaging.instance.requestPermission();
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   AwesomeNotifications().initialize(
     null, // this makes you use your default icon, if you haven't one
@@ -32,8 +34,6 @@ void main() async{
     ],
   );
 
-  FirebaseMessaging.instance.requestPermission();
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
