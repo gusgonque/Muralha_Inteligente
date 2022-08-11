@@ -28,14 +28,14 @@ class Dashboard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _FeatureItem(
+                  FeatureItem(
                     'Lista\nOnline',
                     Icons.list,
                     onClick: () {
                       _showCarList(context);
                     },
                   ),
-                  _FeatureItem(
+                  FeatureItem(
                     'Mapa',
                     Icons.map,
                     onClick: () {
@@ -70,12 +70,12 @@ void _map(BuildContext context) {
   );
 }
 
-class _FeatureItem extends StatelessWidget {
+class FeatureItem extends StatelessWidget {
   final String name;
   final IconData icon;
   final Function onClick;
 
-  _FeatureItem(this.name, this.icon, {required this.onClick});
+  FeatureItem(this.name, this.icon, {required this.onClick});
 
   @override
   Widget build(BuildContext context) {

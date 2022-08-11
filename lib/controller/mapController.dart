@@ -23,12 +23,13 @@ class ShowMap extends StatelessWidget {
         MarkerLayerOptions(
           markers: [
             new Marker(
-              width: 10.0,
-              height: 10.0,
+              width: 13.0,
+              height: 13.0,
               point: new LatLng(lat, long),
               builder: (ctx) => new Container(
-                child: Image.asset('lib/images/carro.png'),
-                //TODO: * Melhorar o ícone do carro. ?
+                child: const DefaultLocationMarker(
+                  color: Colors.red,
+                ),
               ),
             ),
           ],
@@ -61,7 +62,6 @@ class ShowMap extends StatelessWidget {
 
 //Determine actual position
 Future<Position> determinePosition(context) async {
-
   await checkPermissionLocation(context);
 
   return await Geolocator.getCurrentPosition();
@@ -69,18 +69,20 @@ Future<Position> determinePosition(context) async {
 
 // check the permissions for location of dispositive.
 Future<void> checkPermissionLocation(context) async {
-
   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
   LocationPermission permission = await Geolocator.checkPermission();
 
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
-    if (!serviceEnabled || permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+    if (!serviceEnabled ||
+        permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
       showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: Text("O aplicativo não tem acesso a localização do dispositivo.\nVocê não conseguirá utilizar os recursos do aplicativo desse modo.\nPor favor, ative a localização manualmente."),
+            content: Text(
+                "O aplicativo não tem acesso a localização do dispositivo.\nVocê não conseguirá utilizar os recursos do aplicativo desse modo.\nPor favor, ative a localização manualmente."),
           );
         },
       );
@@ -99,11 +101,12 @@ Future<double> determineDistance(double lat, double long) async {
   final prefs = await SharedPreferences.getInstance();
 
   // set value
-  if(position != null) {
+  if (position != null) {
     print('salvando');
     await prefs.setDouble('lat', position.latitude);
     await prefs.setDouble('long', position.longitude);
-    distance = Geolocator.distanceBetween(position.latitude, position.longitude, lat, long);
+    distance = Geolocator.distanceBetween(
+        position.latitude, position.longitude, lat, long);
   } else {
     print('salvando');
     final prefs = await SharedPreferences.getInstance();
@@ -116,4 +119,3 @@ Future<double> determineDistance(double lat, double long) async {
   print('Distance is: $distanceInKm');
   return distanceInKm;
 }
-
