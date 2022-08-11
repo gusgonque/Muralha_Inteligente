@@ -3,8 +3,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/controller/mapController.dart';
-
-final navigatorKey = GlobalKey<NavigatorState>();
+import 'package:muralha_inteligente_app/models/vehicleModel.dart';
+import 'package:muralha_inteligente_app/screens/vehicle_info.dart';
 
 final String topic = 'todos';
 
@@ -19,18 +19,23 @@ Future<void> startNotificationHandler(FirebaseMessaging messaging) async {
 
   messaging.subscribeToTopic(topic);
 
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('mensagem recebida em foreground');
-  });
-
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
   AwesomeNotifications().actionStream.listen((event) {
     print('event received!');
-    print(event.toMap().toString());
-    //TODO: desobrir como abrir a tela
-
+    print(event.payload.toString());
+    var map = new Map();
+    map["id"] = event.payload!["id"];
+    map["plate"] = event.payload!["plate"];
+    map["description"] = event.payload!["description"];
+    map["lat"] = event.payload!["lat"];
+    map["long"] = event.payload!["long"];
+    Vehicle vehicle = new Vehicle(id: map["id"], plate: map["plate"], description: map["description"], latitude: map["lat"], longitude: map["long"]);
+    MaterialPageRoute(
+      builder: (context) => VehicleInfo(vehicle),
+    );
   });
+
 }
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -38,6 +43,8 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   int id = createUniqueID(10000);
   double distanceInKm = await determineDistance(
       double.parse(message.data["lat"]), double.parse(message.data["long"]));
+
+  var vehicle = {'id': message.data["id"].toString(), 'plate': message.data["plate"].toString(), 'description': message.data["description"].toString(), 'latitude': message.data["lat"].toString(), 'longitude': message.data["long"].toString()};
 
   if (distanceInKm <= 5)
     AwesomeNotifications().createNotification(
@@ -47,19 +54,9 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
             title: 'VEÍCULO SUSPEITO EM SUA ÁREA!',
             body:
                 '${message.data["description"]} de placa ${message.data["plate"]}. Clique aqui para mais informações.',
+            payload: vehicle,
             wakeUpScreen: true),
-        actionButtons: [
-          NotificationActionButton(key: 'key', label: 'label'),
-        ]);
+    );
 
-}
 
-listenActionStream() {
-  AwesomeNotifications().actionStream.listen((receivedAction) {
-    var payload = receivedAction.payload;
-
-    if (receivedAction.channelKey == 'normal_channel') {
-      //do something here
-    }
-  });
 }
