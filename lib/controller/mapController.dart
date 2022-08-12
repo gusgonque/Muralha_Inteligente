@@ -1,64 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-class ShowMap extends StatelessWidget {
-  final double lat;
-  final double long;
-  ShowMap(this.lat, this.long);
-  @override
-  Widget build(BuildContext context) {
-    return FlutterMap(
-      options: MapOptions(
-        //center: LatLng(-14.2400732, -53.1805017), // coordernadas do Brasil
-        center: new LatLng(lat, long),
-        zoom: 10,
-        maxZoom: 19,
-        interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-      ),
-      layers: [
-        MarkerLayerOptions(
-          markers: [
-            new Marker(
-              width: 13.0,
-              height: 13.0,
-              point: new LatLng(lat, long),
-              builder: (ctx) => new Container(
-                child: const DefaultLocationMarker(
-                  color: Colors.red,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-      children: [
-        TileLayerWidget(
-          options: TileLayerOptions(
-            urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            subdomains: ['a', 'b', 'c'],
-            maxZoom: 19,
-          ),
-        ),
-        LocationMarkerLayerWidget(
-          options: LocationMarkerLayerOptions(
-            marker: const DefaultLocationMarker(
-              color: Colors.blue,
-            ),
-            markerSize: const Size(15, 15),
-            accuracyCircleColor: Colors.blue.withOpacity(0.1),
-            headingSectorColor: Colors.blue.withOpacity(0.5),
-            headingSectorRadius: 100,
-            markerAnimationDuration: Duration.zero, // disable animation
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 //Determine actual position
 Future<Position> determinePosition(context) async {
@@ -102,13 +44,13 @@ Future<double> determineDistance(double lat, double long) async {
 
   // set value
   if (position != null) {
-    print('salvando');
+    print('salvando localização');
     await prefs.setDouble('lat', position.latitude);
     await prefs.setDouble('long', position.longitude);
     distance = Geolocator.distanceBetween(
         position.latitude, position.longitude, lat, long);
   } else {
-    print('salvando');
+    print('carregando localização');
     final prefs = await SharedPreferences.getInstance();
     final latitude = prefs.getDouble('lat') ?? 0;
     final longitude = prefs.getDouble('long') ?? 0;

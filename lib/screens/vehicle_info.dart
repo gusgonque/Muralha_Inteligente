@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:muralha_inteligente_app/controller/mapController.dart';
 import 'package:muralha_inteligente_app/models/vehicleModel.dart';
 import 'package:muralha_inteligente_app/screens/dashboard.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'map.dart';
 
 class VehicleInfo extends StatelessWidget {
   final Vehicle vehicle;
 
   VehicleInfo(this.vehicle);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +49,8 @@ class VehicleInfo extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: FeatureItem('Abrir Rota', Icons.route_rounded, onClick: () {
-                navigateTo(vehicle.latitude, vehicle.longitude);
+              child: FeatureItem('Abrir Rota', Icons.route_rounded, onClick:
+                  () {navigateTo(vehicle.latitude, vehicle.longitude);
               }),
             )
           ],
