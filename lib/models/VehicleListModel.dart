@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/controller/vehicleController.dart';
 import 'package:muralha_inteligente_app/models/vehicleModel.dart';
-import 'package:muralha_inteligente_app/screens/vehicle_list.dart';
+import 'package:muralha_inteligente_app/screens/vehicleList.dart';
 import 'package:http/http.dart' as http;
 
 class VehicleList extends StatelessWidget {

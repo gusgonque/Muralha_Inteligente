@@ -3,19 +3,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:latlong2/latlong.dart';
 
-class Map extends StatelessWidget {
-  final double _latitude = -25.516592;
-  final double _longitude = -54.585251;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mapa'),
-      ),
-      body: ShowMap(_latitude, _longitude),
-    );
-  }
-}
 class ShowMap extends StatelessWidget {
   final double lat;
   final double long;

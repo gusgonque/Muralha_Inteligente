@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:muralha_inteligente_app/screens/vehicle_info.dart';
+import 'package:muralha_inteligente_app/screens/vehicleInfo.dart';
 import '../models/vehicleModel.dart';
 
 class VehiclesList extends StatelessWidget {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/controller/mapController.dart';
 import 'package:muralha_inteligente_app/models/VehicleListModel.dart';
-import 'package:muralha_inteligente_app/screens/map.dart';
+import 'package:muralha_inteligente_app/screens/showMap.dart';
+import 'package:muralha_inteligente_app/screens/vehicleAdd.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -36,10 +37,10 @@ class Dashboard extends StatelessWidget {
                     },
                   ),
                   FeatureItem(
-                    'Mapa',
-                    Icons.map,
+                    'Adicionar Veículo',
+                    Icons.add,
                     onClick: () {
-                      _map(context);
+                      _vehicleAdd(context);
                     },
                   ),
                 ],
@@ -62,10 +63,10 @@ void _showCarList(BuildContext context) {
   );
 }
 
-void _map(BuildContext context) {
+void _vehicleAdd(BuildContext context) {
   Navigator.of(context).push(
     MaterialPageRoute(
-      builder: (context) => Map(),
+      builder: (context) => VehicleAdd(),
     ),
   );
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/controller/mapController.dart';
 import 'package:muralha_inteligente_app/main.dart';
 import 'package:muralha_inteligente_app/models/vehicleModel.dart';
-import 'package:muralha_inteligente_app/screens/vehicle_info.dart';
+import 'package:muralha_inteligente_app/screens/vehicleInfo.dart';
 
 final String topic = 'todos';
 
