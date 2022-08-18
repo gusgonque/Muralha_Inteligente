@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muralha_inteligente_app/controller/mapController.dart';
 import 'package:muralha_inteligente_app/models/VehicleListModel.dart';
-import 'package:muralha_inteligente_app/screens/showMap.dart';
 import 'package:muralha_inteligente_app/screens/vehicleAdd.dart';
 
 class Dashboard extends StatelessWidget {
@@ -24,7 +23,7 @@ class Dashboard extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset('lib/images/logo.png'), // TODO: Fazer a logo
+                //child: Image.asset('lib/images/logo.png'), // TODO: Fazer a logo
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
