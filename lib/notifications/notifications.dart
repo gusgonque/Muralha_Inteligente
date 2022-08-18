@@ -35,8 +35,6 @@ Future<void> startNotificationHandler(FirebaseMessaging messaging) async {
 
     Vehicle vehicle = new Vehicle(id: int.parse(map["id"]), plate: map["plate"], description: map["description"], latitude: double.parse(map["lat"]), longitude: double.parse(map["lng"]));
 
-    print(vehicle);
-
     BuildContext context;
     context = navigatorKey.currentContext!;
 
