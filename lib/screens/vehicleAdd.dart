@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:muralha_inteligente_app/controller/vehicleController.dart';
+import 'package:muralha_inteligente_app/models/vehicleModel.dart';
+//todo: camera? https://docs.flutter.dev/cookbook/plugins/picture-using-camera
 class VehicleAdd extends StatefulWidget {
   @override
   _VehicleAddState createState() => _VehicleAddState();
@@ -71,15 +73,10 @@ class _VehicleAddState extends State<VehicleAdd> {
                       width: double.maxFinite,
                       child: ElevatedButton(
                           onPressed: () async {
-
                             Position position = await Geolocator.getCurrentPosition();
-
                             if (_formKey.currentState!.validate()) {
-                              final String plate = _plateController.text;
-                              final String description = _descriptionController.text;
-
-                              //TODO: método para adicionar o veículo
-                              //todo: Navigator.pop(context);
+                              insertVehicle(Vehicle(id: 0, plate: _plateController.text, description: _descriptionController.text, latitude: position.latitude, longitude: position.longitude));
+                              Navigator.pop(context);
                             }
                           },
                           child: Text('Adicionar')),
