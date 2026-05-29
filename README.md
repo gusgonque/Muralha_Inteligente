@@ -1,19 +1,19 @@
 # Muralha Inteligente
 
-Aplicativo mobile em Flutter para alertas de veiculos suspeitos com base em localizacao. O app recebe notificacoes via Firebase Cloud Messaging, calcula a distancia entre o usuario e o ponto informado no alerta e exibe detalhes do veiculo em um mapa.
+Aplicativo mobile em Flutter para alertas de veículos suspeitos com base em localização. O app recebe notificações via Firebase Cloud Messaging, calcula a distância entre o usuário e o ponto informado no alerta e exibe detalhes do veículo em um mapa.
 
-O projeto foi desenvolvido como prototipo academico/mobile, integrando notificacoes push, geolocalizacao, mapa interativo e persistencia local simples.
+O projeto foi desenvolvido como protótipo acadêmico/mobile, integrando notificações push, geolocalização, mapa interativo e persistência local simples.
 
 ## Destaques
 
 - App Flutter com suporte Android/iOS.
-- Integracao com Firebase Cloud Messaging.
-- Notificacoes locais com `awesome_notifications`.
-- Inscricao em topico de notificacao para receber alertas.
-- Calculo de distancia usando geolocalizacao do dispositivo.
+- Integração com Firebase Cloud Messaging.
+- Notificações locais com `awesome_notifications`.
+- Inscrição em tópico de notificação para receber alertas.
+- Cálculo de distância usando geolocalização do dispositivo.
 - Mapa com OpenStreetMap via `flutter_map`.
-- Marcador da localizacao do usuario e do veiculo alertado.
-- Telas para listagem, cadastro e detalhes de veiculos.
+- Marcador da localização do usuário e do veículo alertado.
+- Telas para listagem, cadastro e detalhes de veículos.
 
 ## Stack
 
@@ -30,20 +30,20 @@ O projeto foi desenvolvido como prototipo academico/mobile, integrando notificac
 
 | Caminho | Responsabilidade |
 | --- | --- |
-| `lib/main.dart` | Inicializacao do Flutter, Firebase e notificacoes. |
-| `lib/notifications/` | Tratamento de mensagens push e notificacoes locais. |
-| `lib/controller/mapController.dart` | Mapa, permissao de localizacao e calculo de distancia. |
+| `lib/main.dart` | Inicialização do Flutter, Firebase e notificações. |
+| `lib/notifications/` | Tratamento de mensagens push e notificações locais. |
+| `lib/controller/mapController.dart` | Mapa, permissão de localização e cálculo de distância. |
 | `lib/screens/` | Telas principais do aplicativo. |
 | `lib/models/` | Modelos usados pelas telas e controladores. |
-| `android/` e `ios/` | Configuracoes nativas do projeto Flutter. |
+| `android/` e `ios/` | Configurações nativas do projeto Flutter. |
 
 ## Como executar
 
-Pre-requisitos:
+Pré-requisitos:
 
-- Flutter SDK compativel com Dart `>=2.12.0 <3.0.0`.
+- Flutter SDK compatível com Dart `>=2.12.0 <3.0.0`.
 - Projeto Firebase configurado para Android/iOS.
-- Permissoes de localizacao habilitadas no dispositivo ou emulador.
+- Permissões de localização habilitadas no dispositivo ou emulador.
 
 Passos:
 
@@ -52,14 +52,14 @@ flutter pub get
 flutter run
 ```
 
-Para uma execucao real com notificacoes, configure o Firebase do projeto e garanta que o app esteja inscrito no topico usado pelo backend de envio.
+Para uma execução real com notificações, configure o Firebase do projeto e garanta que o app esteja inscrito no tópico usado pelo backend de envio.
 
-## Observacoes de seguranca
+## Observações de segurança
 
-- Configuracoes mobile do Firebase podem existir no app, mas chaves devem estar restritas por pacote/bundle e regras do Firebase.
-- Service accounts e chaves privadas de backend nao devem ficar neste repositorio.
-- O backend de envio de notificacoes deve permanecer separado do app mobile.
+- Configurações mobile do Firebase podem existir no app, mas chaves devem estar restritas por pacote/bundle e regras do Firebase.
+- Service accounts e chaves privadas de backend não devem ficar neste repositório.
+- O backend de envio de notificações deve permanecer separado do app mobile.
 
 ## Status
 
-Prototipo academico finalizado. O repositorio demonstra integracao mobile com notificacoes, localizacao e mapas em Flutter.
+Protótipo acadêmico finalizado. O repositório demonstra integração mobile com notificações, localização e mapas em Flutter.
